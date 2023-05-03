@@ -1,0 +1,73 @@
+name: Arxiv Daily 
+
+on:
+  schedule:
+    - cron: '0 2 * * mon-fri'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Report
+        env:
+          GITHUB: ${{ secrets.GITHUB }}
+        run: "python -u main.py"
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Specify connection via URL (replaces server_address, server_port, secure,
+          # username and password)
+          #
+          # Format:
+          #
+          #  * smtp://user:password@server:port
+          #  * smtp+starttls://user:password@server:port
+          connection_url: ${{secrets.MAIL_CONNECTION}}
+          # Required mail server address if not connection_url:
+          server_address: ${{secrets.MAIL_SERVER}}
+          # Server port, default 25:
+          server_port: 465
+          # Optional whether this connection use TLS (default is true if server_port is 465)
+          secure: true
+          # Optional (recommended) mail server username:
+          username: ${{secrets.MAIL_USERNAME}}
+          # Optional (recommended) mail server password:
+          password: ${{secrets.MAIL_PASSWORD}}
+          # Required mail subject:
+          subject: Arxiv Papers of Today
+          # Required recipients' addresses:
+          to: ${{secrets.MAIL_TO}}
+          # Required sender full name (address can be skipped):
+          from: ${{secrets.MAIL_FROM}}
+          # Optional plain body:
+          #body: Build job of ${{github.repository}} completed successfully!
+          # Optional HTML body read from file:
+          html_body: file://mail.html
+          # Optional carbon copy recipients:
+          cc: ${{secrets.MAIL_CC}}
+          # Optional blind carbon copy recipients:
+          bcc: ${{secrets.MAIL_BCC}}
+          # Optional recipient of the email response:
+          #reply_to: luke@example.com
+          # Optional Message ID this message is replying to:
+          #in_reply_to: <random-luke@example.com>
+          # Optional unsigned/invalid certificates allowance:
+          ignore_cert: true
+          # Optional converting Markdown to HTML (set content_type to text/html too):
+          convert_markdown: true
+          # Optional attachments:
+          #attachments: attachments.zip,git.diff,./dist/static/*.js
+          # Optional priority: 'high', 'normal' (default) or 'low'
+          priority: low
