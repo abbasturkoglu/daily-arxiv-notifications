@@ -49,21 +49,21 @@ Value: yourmail@domain.com, anothermail@domain.com
 Optional
 Name: MAIL_CC
 Value: yourmail@domain.com, anothermail@domain.com
-
-
-
 ```
+
+
+
 
 #### 2. Edit python-package.yml
 
 **update `python-package.yml` as your perferences.**
 
 
-```python
+
 
 
 #### 3. Edit config.py
-
+```python
 # Set new submission url of subject
 NEW_SUB_URL = 'https://arxiv.org/list/cs/new'
 
