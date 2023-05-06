@@ -12,9 +12,9 @@ This repository makes it easy to filter papers by keywords and follow-up new pap
 
 ## Usage( github actions)
 
-#### 0. If you find this repo useful please put a ⭐Star⭐ to this repo.
+#### 1. If you find this repo useful please put a ⭐Star⭐ to this repo.
 
-#### 1.Clone this Repo and Create a Repo
+#### 2. Clone this Repo and Create a Repo
 
 - Create a repository to get notification via e-mail.
 -  **click "Settings"->"Secrets and variables"->"Actions" -> New repository secret**
@@ -54,7 +54,7 @@ Value: yourmail@domain.com, anothermail@domain.com
 
 
 
-#### 2. Edit python-package.yml
+#### 3. Edit python-package.yml
 
 **update `python-package.yml` as your perferences.**
 
@@ -62,7 +62,7 @@ Value: yourmail@domain.com, anothermail@domain.com
 
 
 
-#### 3. Edit config.py
+#### 4. Edit config.py
 ```python
 # Set new submission url of subject
 NEW_SUB_URL = 'https://arxiv.org/list/cs/new'
@@ -71,6 +71,6 @@ NEW_SUB_URL = 'https://arxiv.org/list/cs/new'
 KEYWORD_LIST = ["changeme"]
 ```
 
-#### 4.  Test
+#### 5.  Test
 
 To test the functionality, you can click "Actions -> Arxiv Daily -> Run Workflow -> Run Workflow" for an immediate run.
