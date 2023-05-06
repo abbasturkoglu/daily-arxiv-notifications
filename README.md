@@ -12,7 +12,7 @@ This repository makes it easy to filter papers by keywords and follow-up new pap
 
 ## Usage( github actions)
 
-#### 0. ⭐Star⭐
+#### 0. If you find this repo useful please put a ⭐Star⭐ to this repo.
 
 #### 1.Clone this Repo and Create a Repo
 
