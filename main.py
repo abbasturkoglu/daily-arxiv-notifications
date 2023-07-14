@@ -55,8 +55,8 @@ def main():
             report = '### {}\n - **Authors:** {}\n - **Subjects:** {}\n - **Arxiv link:** {}\n - **Pdf link:** {}\n - **Abstract**\n {}' \
                 .format(paper['title'], paper['authors'], paper['subjects'], paper['main_page'], paper['pdf'],
                         paper['abstract'])
-            full_report = full_report + report + '\n'
-        total_paper = total_paper + keyword_dict[keyword]
+            full_report = full_report + report + '\n'9
+        total_paper += len(keyword_dict[keyword]
     
     # Opening the existing HTML file
     Func = open("mail.html","w")
