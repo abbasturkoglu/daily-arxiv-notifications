@@ -23,8 +23,11 @@ jobs:
       - name: Report
         env:
           GITHUB: ${{ secrets.GITHUB }}
-        run: "python -u main.py"
+        #run: "python -u main.py"
+        run: |
+           export COUNT=$(python -u main.py)
       - name: Send mail
+        if: COUNT > 0
         uses: dawidd6/action-send-mail@v3
         with:
           # Specify connection via URL (replaces server_address, server_port, secure,
