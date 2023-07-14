@@ -56,7 +56,7 @@ def main():
                 .format(paper['title'], paper['authors'], paper['subjects'], paper['main_page'], paper['pdf'],
                         paper['abstract'])
             full_report = full_report + report + '\n'
-        total_paper += len(keyword_dict[keyword]
+        total_paper += len(keyword_dict[keyword])
     
     # Opening the existing HTML file
     Func = open("mail.html","w")
