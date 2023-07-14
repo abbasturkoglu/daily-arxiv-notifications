@@ -7,9 +7,10 @@ on:
 
 jobs:
   build:
-
+    
     runs-on: ubuntu-latest
-
+    env:
+      COUNT: 0
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -25,9 +26,9 @@ jobs:
           GITHUB: ${{ secrets.GITHUB }}
         #run: "python -u main.py"
         run: |
-           export COUNT=$(python -u main.py)
+           export env.COUNT=$(python -u main.py)
       - name: Send mail
-        if: $COUNT > 0
+        if: ${{env.COUNT}} > 0
         uses: dawidd6/action-send-mail@v3
         with:
           # Specify connection via URL (replaces server_address, server_port, secure,
