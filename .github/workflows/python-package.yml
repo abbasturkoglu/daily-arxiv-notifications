@@ -28,7 +28,7 @@ jobs:
            export COUNT=$(python -u main.py)
            echo $COUNT
       - name: Send mail
-        if: $COUNT > 0
+        #if: $COUNT > 0
         uses: dawidd6/action-send-mail@v3
         with:
           # Specify connection via URL (replaces server_address, server_port, secure,
