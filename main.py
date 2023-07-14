@@ -43,7 +43,7 @@ def main():
         for keyword in keyword_list:
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
-
+    total_paper = 0
     full_report = ''
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
@@ -56,7 +56,7 @@ def main():
                 .format(paper['title'], paper['authors'], paper['subjects'], paper['main_page'], paper['pdf'],
                         paper['abstract'])
             full_report = full_report + report + '\n'
-
+        total_paper += keyword_dict[keyword]
     
     # Opening the existing HTML file
     Func = open("mail.html","w")
