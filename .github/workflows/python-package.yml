@@ -28,6 +28,7 @@ jobs:
            echo "python -u main.py" >> $INPUT_STORE
            echo "Access direct: "
            echo $INPUT_STORE
+           echo ${{env.COUNT}}
            "python -u main.py"
       - name: Send mail
         if: ${{env.COUNT}} > 0
