@@ -24,8 +24,7 @@ jobs:
       - name: Report
         env:
           GITHUB: ${{ secrets.GITHUB }}
-        #run: "python -u main.py"
-        #no need to run again
+        run: "python -u main.py"
       - name: Send mail
         if: ${{env.COUNT}} > 0
         uses: dawidd6/action-send-mail@v3
