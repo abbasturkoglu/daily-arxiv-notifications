@@ -10,7 +10,7 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      COUNT: $(python -u main.py)
+      COUNT: echo "python -u main.py"
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -25,9 +25,6 @@ jobs:
         env:
           GITHUB: ${{ secrets.GITHUB }}
         run: |
-           echo "python -u main.py" >> $INPUT_STORE
-           echo "Access direct: "
-           echo $INPUT_STORE
            echo ${{env.COUNT}}
            "python -u main.py"
       - name: Send mail
