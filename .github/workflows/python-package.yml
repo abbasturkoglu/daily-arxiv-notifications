@@ -10,7 +10,7 @@ jobs:
     
     runs-on: ubuntu-latest
     env:
-      COUNT: 0
+      COUNT: $(python -u main.py)
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
@@ -24,9 +24,9 @@ jobs:
       - name: Report
         env:
           GITHUB: ${{ secrets.GITHUB }}
-        #run: "python -u main.py"
-        run: |
-           export {env.COUNT}=$(python -u main.py)
+        run: "python -u main.py"
+        #run: |
+        # export {env.COUNT}=$(python -u main.py)
       - name: Send mail
         if: ${{env.COUNT}} > 0
         uses: dawidd6/action-send-mail@v3
